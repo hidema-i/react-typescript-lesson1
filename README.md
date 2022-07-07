@@ -48,3 +48,14 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## React Chakra Ui
+
+"@chakra-ui/react": "^2.2.1",
+"@emotion/react": "^11.9.3",
+"@emotion/styled": "^11.9.3",
+
+## react-router-dom
+
+"react-router-dom": "^5.2.0",
+"@types/react-router-dom": "^5.1.7",
+
+## Atomic design
