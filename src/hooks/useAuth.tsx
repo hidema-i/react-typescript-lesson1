@@ -3,9 +3,11 @@ import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import { User } from "../types/api/user";
+import { useMessage } from "./useMessage";
 export const useAuth = () => {
   ///画面遷移するため
   const history = useHistory();
+  const { showMessage } = useMessage();
   //Logingで非活性
   const [loading, setLoading] = useState(false);
   const login = useCallback(
@@ -15,15 +17,16 @@ export const useAuth = () => {
         .get<User>(`https://jsonplaceholder.typicode.com/users/${id}`)
         .then((result) => {
           if (result.data) {
+            showMessage({ title: "Login Success!!", status: "success" });
             history.push("/home");
           } else {
-            alert("User認証失敗");
+            showMessage({ title: "User not found😅", status: "error" });
           }
         })
-        .catch(() => alert("ログインできません"))
+        .catch(() => showMessage({ title: "Can't log in...", status: "error" }))
         .finally(() => setLoading(false));
     },
-    [history]
+    [history, showMessage]
   );
   return { login, loading };
 };
